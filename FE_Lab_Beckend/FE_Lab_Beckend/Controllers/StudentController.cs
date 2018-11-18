@@ -16,11 +16,29 @@ namespace FE_Lab_Beckend.Controllers
             _studentService = studentService;
         }
 
-        // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<Student>> Get()
         {
             return new JsonResult(_studentService.GetStudents());
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Student> Get(int id)
+        {
+            return new JsonResult(_studentService.GetStudent(id));
+        }
+
+        [HttpPost]
+        public void Post([FromBody]Student model)
+        {
+            _studentService.AddStudent(model);
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _studentService.DeleteStudent(id);
         }
     }
 }

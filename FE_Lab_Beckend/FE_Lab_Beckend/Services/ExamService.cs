@@ -14,6 +14,25 @@ namespace FE_Lab_Beckend.Services
             _examRepository = examRepository;
         }
 
-        public List<Exam> GetExams() => _examRepository.Table.Select(x => x).ToList();
+        public List<Exam> GetExams()
+        {
+            return _examRepository.Table.Select(x => x).ToList();
+        }
+
+        public Exam GetExam(int id)
+        {
+            return _examRepository.Table.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void AddExam(Exam model)
+        {
+            _examRepository.Insert(model);
+        }
+
+        public void DeleteExam(int id)
+        {
+            var exam = GetExam(id);
+            _examRepository.Delete(exam);
+        }
     }
 }

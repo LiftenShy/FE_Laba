@@ -6,5 +6,11 @@ namespace FE_Lab_Beckend.Services
     public interface IStudentService
     {
         List<Student> GetStudents();
+
+        Student GetStudent(int id);
+
+        void AddStudent(Student model);
+        
+        void DeleteStudent(int id);
     }
 }

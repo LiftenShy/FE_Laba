@@ -42,7 +42,15 @@ namespace FE_Lab_Beckend
             services.AddScoped<IExamService, ExamService>();
             services.AddScoped<IStudentService, StudentService>();
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             services.AddMvc();
         }
 
@@ -55,10 +63,7 @@ namespace FE_Lab_Beckend
                 app.UseDatabaseErrorPage();
             }
 
-            app.UseCors(opt => opt.AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials()
-                .AllowAnyOrigin());
+            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
 

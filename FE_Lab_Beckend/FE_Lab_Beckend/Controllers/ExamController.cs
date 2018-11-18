@@ -10,18 +10,35 @@ namespace FE_Lab_Beckend.Controllers
     public class ExamController : ControllerBase
     {
         private readonly IExamService _examService;
-        private readonly IStudentService _studentService;
 
-        public ExamController(IExamService examService, IStudentService studentService)
+        public ExamController(IExamService examService)
         {
             _examService = examService;
-            _studentService = studentService;
         }
 
         [HttpGet]
         public ActionResult<List<Exam>> Get()
         {
             return new JsonResult(_examService.GetExams());
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Exam> Get(int id)
+        {
+            return new JsonResult(_examService.GetExam(id));
+        }
+
+        [HttpPost]
+        public void Post([FromBody]Exam model)
+        {
+            _examService.AddExam(model);
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _examService.DeleteExam(id);
         }
     }
 }

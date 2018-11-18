@@ -58,6 +58,7 @@ namespace FE_Lab_Beckend
 
             app.UseCors(opt => opt.AllowAnyHeader()
                 .AllowAnyMethod()
+                .AllowCredentials()
                 .AllowAnyOrigin());
 
             app.UseStaticFiles();

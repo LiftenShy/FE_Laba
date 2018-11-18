@@ -32,9 +32,6 @@ namespace FE_Lab_Beckend
         
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<UniversityContext>(opt =>
-            //    opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddSwaggerGen(opt =>
             {
                 opt.SwaggerDoc("v1", new Info { Title = "FE v1", Version = "v1" });

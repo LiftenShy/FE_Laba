@@ -66,10 +66,10 @@ namespace FE_Lab_Beckend
                 app.UseDatabaseErrorPage();
             }
 
-            //app.UseCors(options => options.WithOrigins("http://felab.apphb.com/")
-            //.AllowAnyMethod());
+            app.UseCors(options => options.WithOrigins("http://felab.apphb.com/")
+            .AllowAnyMethod());
 
-            app.UseCors("AllowAllHeaders");
+            //app.UseCors("AllowAllHeaders");
 
             /*app.UseCors(opt => opt.AllowAnyHeader()
                 .AllowAnyMethod()

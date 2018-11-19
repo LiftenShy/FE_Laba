@@ -39,8 +39,8 @@ namespace FE_Lab_Beckend
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IExamService, ExamService>();
-            services.AddScoped<IExamService, ExamService>();
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ITeacherService, TeacherService>();
 
             services.AddCors(options =>
             {

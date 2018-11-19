@@ -1,15 +1,15 @@
-﻿using FE_Lab_Beckend.Data;
-using FE_Lab_Beckend.Data.Models;
+﻿using FE_Lab_Beckend.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
+using FE_Lab_Beckend.Data.Interface;
 
 namespace FE_Lab_Beckend.Services
 {
     public class TeacherService : ITeacherService
     {
-        private readonly Repository<Teacher> _teacherRepository;
+        private readonly IRepository<Teacher> _teacherRepository;
 
-        public TeacherService(Repository<Teacher> teacherRepository)
+        public TeacherService(IRepository<Teacher> teacherRepository)
         {
             _teacherRepository = teacherRepository;
         }
